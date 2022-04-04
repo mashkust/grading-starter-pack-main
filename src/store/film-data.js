@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {NameSpace} from '../const';
+import {NameSpace,DEFAULT_GENRE} from '../const';
 
 // const initialState= {
 //   id: 1,
@@ -22,7 +22,8 @@ import {NameSpace} from '../const';
 
 const initialState= {
   quests: [],
-  quest: null,
+  quest: {},
+  activeGenre: DEFAULT_GENRE,
 };
 
 export const filmData = createSlice({
