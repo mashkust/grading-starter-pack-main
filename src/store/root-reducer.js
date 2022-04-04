@@ -1,9 +1,9 @@
 import {combineReducers} from '@reduxjs/toolkit';
 // import {NameSpace} from '../const';
-import {filmData} from './film-data';
-import {questProcess} from './film-process'
+import {questData} from './quest-data';
+import {questProcess} from './quest-process'
 
 export const rootReducer = combineReducers({
-  'DATA': filmData.reducer,
+  'DATA': questData.reducer,
   'QUEST': questProcess.reducer,
 });

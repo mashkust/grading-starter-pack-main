@@ -17,20 +17,12 @@ export const APIRoute = {
 }
 
 export const GENRE = {
-  all: 'Все квесты',
-  adventures: 'Приключения',
-  horror: 'Ужасы',
-  mystic: 'Мистика',
-  detective: 'Детектив',
-  scifi: 'Sci-fi',
-}
-
-export const GENRE_QUEST = {
-  adventures: 'adventures',
-  horror: 'horror',
-  mystic: 'mystic',
-  detective: 'detective',
-  scifi: 'sci-fi',
+  'all': 'Все квесты',
+  'adventures': 'Приключения',
+  'horror': 'Ужасы',
+  'mystic': 'Мистика',
+  'detective': 'Детектив',
+  'sci-fi': 'Sci-fi',
 }
 
 export const DEFAULT_GENRE = GENRE.all;

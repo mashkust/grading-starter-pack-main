@@ -9,9 +9,9 @@ import { ReactComponent as IconPuzzle } from 'assets/img/icon-puzzle.svg';
 import * as S from './quests-catalog.styled';
 import {useAppSelector, useAppDispatch} from 'hooks/hooks';
 import {generatePath} from 'react-router-dom';
-import {AppRoute, DEFAULT_GENRE} from 'const';
+import {AppRoute, DEFAULT_GENRE, GENRE} from 'const';
 import { useState, useEffect} from 'react';
-import {setActiveGenre} from 'store/film-process';
+import {setActiveGenre} from 'store/quest-process';
 
 const QuestsCatalog = () => {
   const initialQuests = useAppSelector(({DATA}) => DATA.quests);
@@ -23,17 +23,17 @@ const QuestsCatalog = () => {
   useEffect(() => {
     setGenres([DEFAULT_GENRE, ...new Set(initialQuests && initialQuests.map((quest) => quest.type))]);
   }, [initialQuests]);
-
+  console.log(genres)
   return(
   <>
   <S.Tabs>
   {genres.map((genre) => (
         <S.TabItem>
-          <S.TabBtn onClick = {() => {
+          <S.TabBtn isActive = {genre === activeGenre ? 'isActive' : ''} onClick = {() => {
             dispatch(setActiveGenre(genre));
           }}>
             <IconAllQuests />
-            <S.TabTitle>{genre}</S.TabTitle>
+            <S.TabTitle>{genre !== DEFAULT_GENRE ? GENRE[genre] : DEFAULT_GENRE}</S.TabTitle>
           </S.TabBtn>
         </S.TabItem>
   ))}

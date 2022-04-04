@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api, store } from './index';
 import { APIRoute } from '../const';
-import {loadQuests, loadQuest} from './film-data';
+import {loadQuests, loadQuest} from './quest-data';
 
 export const fetchQuestsAction = createAsyncThunk(
   'data/fetchQuests',
