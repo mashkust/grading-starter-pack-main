@@ -25,4 +25,21 @@ export const GENRE = {
   'sci-fi': 'Sci-fi',
 }
 
-export const DEFAULT_GENRE = GENRE.all;
+export const GENRE_QUEST = {
+  adventures: 'adventures',
+  horror: 'horror',
+  mystic: 'mystic',
+  detective: 'detective',
+  scifi: 'sci-fi',
+}
+
+export const LEVEL_QUEST = {
+  'easy': 'простой',
+  'medium': 'средний',
+  'hard': 'сложный',
+}
+
+export const DEFAULT_GENRE = {
+   id: 100,
+   genre:  GENRE.all
+  };
