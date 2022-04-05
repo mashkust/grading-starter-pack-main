@@ -6,8 +6,6 @@ import {useState} from 'react';
 import {sendOrderAction} from 'store/api-actions'
 
 const BookingModal = () => {
-  // const params = useParams();
-  // const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const isOrderSending = useAppSelector(({DATA}) => DATA.isDataSending);
@@ -57,7 +55,8 @@ const BookingModal = () => {
             type="tel"
             id="booking-phone"
             name="booking-phone"
-            placeholder="Телефон: 9990000000"
+            placeholder="Телефон в формате: 7000000000"
+            pattern="[7]{1}[0-9]{9}"
             value={userPhone}
             onChange = {(evt) => setUserPhone(evt.currentTarget.value)}
             disabled = {isOrderSending}
