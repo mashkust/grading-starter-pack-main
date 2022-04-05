@@ -3,14 +3,19 @@ import L from 'leaflet';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import './Map.css';
 
-// указываем путь к файлам marker
-L.Icon.Default.imagePath = "https://unpkg.com/leaflet@1.5.0/dist/images/";
+var placeholder = L.icon({
+  iconUrl: "https://unpkg.com/leaflet@1.5.0/dist/images/marker-icon.png",
+  // iconSize:     [47, 47], // size of the icon
+  // iconAnchor:   [47, 47], // point of the icon which will correspond to marker's location
+  // popupAnchor:  [-25, -50], // point from which the popup should open relative to the iconAnchor
+  // tooltipAnchor:[30, -2]
+});
 
 class MapComponent extends React.Component {
   state = {
-    lat: 55.702868,
-    lng: 37.530865,
-    zoom: 10
+    lat: 59.9684,
+    lng: 30.3175,
+    zoom: 17,
   };
 
   render() {
@@ -23,8 +28,8 @@ class MapComponent extends React.Component {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        <Marker position={center}>
-          <Popup>Какой то крутой текст!!!</Popup>
+        <Marker position={center} icon={ placeholder} >
+          <Popup>Мы находимся по адресу Санкт-Петербург, Набережная реки Карповка, д 5</Popup>
         </Marker>
       </MapContainer>
     );
