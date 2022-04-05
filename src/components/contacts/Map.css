@@ -1,7 +1,6 @@
 @import url("~leaflet/dist/leaflet.css");
 
-body,
-#root,
+
 .leaflet-container {
   height: 336px;
   width: 649px;
