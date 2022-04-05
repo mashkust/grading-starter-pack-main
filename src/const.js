@@ -43,7 +43,12 @@ export const LEVEL_QUEST = {
   'hard': 'сложный',
 }
 
+export const HTTP_CODE = {
+  BAD_REQUEST: 400,
+  NOT_FOUND: 404,
+}
+
 export const DEFAULT_GENRE = {
-   id: 100,
-   genre:  GENRE.all
-  };
+  id: 100,
+  genre:  GENRE.all
+};

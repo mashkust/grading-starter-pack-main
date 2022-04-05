@@ -1,16 +1,16 @@
 import * as S from './booking-modal.styled';
 import { ReactComponent as IconClose } from 'assets/img/icon-close.svg';
 import { useAppDispatch, useAppSelector } from 'hooks/hooks';
-// import {useNavigate, useParams} from 'react-router-dom';
 import {useState} from 'react';
 import {sendOrderAction} from 'store/api-actions'
 
 const BookingModal = () => {
   const dispatch = useAppDispatch();
 
+  // const errorText = useAppSelector(({DATA}) => DATA.errorText);
   const isOrderSending = useAppSelector(({DATA}) => DATA.isDataSending);
   const [userName, setUserName] = useState('');
-  const [userPeopleCount, setUserPeopleCount] = useState();
+  const [userPeopleCount, setUserPeopleCount] = useState(1);
   const [userPhone, setUserPhone] = useState('');
   const [userLegal, setUserLegal] = useState(false);
 
@@ -19,7 +19,7 @@ const BookingModal = () => {
     <S.Modal>
       <S.ModalCloseBtn>
         <IconClose width="16" height="16" />
-        <S.ModalCloseLabel>Закрыть окно</S.ModalCloseLabel>
+        <S.ModalCloseLabel >Закрыть окно</S.ModalCloseLabel>
       </S.ModalCloseBtn>
       <S.ModalTitle>Оставить заявку</S.ModalTitle>
       <S.BookingForm
@@ -31,6 +31,11 @@ const BookingModal = () => {
           phone: userPhone,
           isLegal: userLegal
         }));
+        evt.target.reset()
+        setUserName('')
+        setUserPeopleCount(1)
+        setUserPhone('')
+        setUserLegal(false)
       }}
         action="#"
       >

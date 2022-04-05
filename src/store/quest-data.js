@@ -7,6 +7,7 @@ const initialState= {
   activeGenre: DEFAULT_GENRE,
   orders: [],
   isDataSending: false,
+  setErrorText: '',
 };
 
 export const questData = createSlice({
@@ -22,11 +23,15 @@ export const questData = createSlice({
     sendOrder: (state, action) => {
       state.isDataSending = action.payload;
     },
+    setErrorText: (state, action) => {
+      state.errorText = action.payload.text;
+    },
   },
 });
 
 export const {
   loadQuests,
   loadQuest,
-  sendOrder
+  sendOrder,
+  setErrorText
 } = questData.actions;
