@@ -54,27 +54,27 @@ const DetailedQuest = () => {
               src={coverImg}
               width="1366"
               height="768"
-              alt={quest.title}
+              alt={quest.title ? quest.title : ''}
         />
         <S.PageContentWrapper>
           <S.PageHeading>
-            <S.PageTitle>{quest.title}</S.PageTitle>
-            <S.PageSubtitle>{GENRE[quest.type]}</S.PageSubtitle>
+            <S.PageTitle>{quest.title ? quest.title : ''}</S.PageTitle>
+            <S.PageSubtitle>{quest.type ? GENRE[quest.type] : ''}</S.PageSubtitle>
           </S.PageHeading>
 
           <S.PageDescription>
             <S.Features>
               <S.FeaturesItem>
                 <IconClock width="20" height="20" />
-                <S.FeatureTitle>{quest.duration}</S.FeatureTitle>
+                <S.FeatureTitle>{quest.duration ? quest.duration : ''}</S.FeatureTitle>
               </S.FeaturesItem>
               <S.FeaturesItem>
                 <IconPerson width="19" height="24" />
-                <S.FeatureTitle></S.FeatureTitle>
+                <S.FeatureTitle>{quest.peopleCount ? quest.peopleCount[0] :''}-{quest.peopleCount ? quest.peopleCount[1] :''}</S.FeatureTitle>
               </S.FeaturesItem>
               <S.FeaturesItem>
                 <IconPuzzle width="24" height="24" />
-                <S.FeatureTitle>{ LEVEL_QUEST[quest.level]}</S.FeatureTitle>
+                <S.FeatureTitle>{ quest.level ? LEVEL_QUEST[quest.level] : ''}</S.FeatureTitle>
               </S.FeaturesItem>
             </S.Features>
 

@@ -1,7 +1,22 @@
 import * as S from './booking-modal.styled';
 import { ReactComponent as IconClose } from 'assets/img/icon-close.svg';
+import { useAppDispatch, useAppSelector } from 'hooks/hooks';
+// import {useNavigate, useParams} from 'react-router-dom';
+import {useState} from 'react';
+import {sendOrderAction} from 'store/api-actions'
 
-const BookingModal = () => (
+const BookingModal = () => {
+  // const params = useParams();
+  // const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const isOrderSending = useAppSelector(({DATA}) => DATA.isDataSending);
+  const [userName, setUserName] = useState('');
+  const [userPeopleCount, setUserPeopleCount] = useState();
+  const [userPhone, setUserPhone] = useState('');
+  const [userLegal, setUserLegal] = useState(false);
+
+  return(
   <S.BlockLayer>
     <S.Modal>
       <S.ModalCloseBtn>
@@ -10,9 +25,16 @@ const BookingModal = () => (
       </S.ModalCloseBtn>
       <S.ModalTitle>Оставить заявку</S.ModalTitle>
       <S.BookingForm
-        action="https://echo.htmlacademy.ru"
-        method="post"
-        id="booking-form"
+      onSubmit={(evt)=> {
+        evt.preventDefault();
+        dispatch(sendOrderAction({
+          name: userName,
+          peopleCount: userPeopleCount,
+          phone: userPhone,
+          isLegal: userLegal
+        }));
+      }}
+        action="#"
       >
         <S.BookingField>
           <S.BookingLabel htmlFor="booking-name">Ваше Имя</S.BookingLabel>
@@ -21,6 +43,9 @@ const BookingModal = () => (
             id="booking-name"
             name="booking-name"
             placeholder="Имя"
+            value={userName}
+            onChange = {(evt) => setUserName(evt.currentTarget.value)}
+            disabled = {isOrderSending}
             required
           />
         </S.BookingField>
@@ -32,7 +57,10 @@ const BookingModal = () => (
             type="tel"
             id="booking-phone"
             name="booking-phone"
-            placeholder="Телефон"
+            placeholder="Телефон: 9990000000"
+            value={userPhone}
+            onChange = {(evt) => setUserPhone(evt.currentTarget.value)}
+            disabled = {isOrderSending}
             required
           />
         </S.BookingField>
@@ -45,6 +73,9 @@ const BookingModal = () => (
             id="booking-people"
             name="booking-people"
             placeholder="Количество участников"
+            value={userPeopleCount}
+            onChange = {(evt) => setUserPeopleCount(Number(evt.currentTarget.value))}
+            disabled = {isOrderSending}
             required
           />
         </S.BookingField>
@@ -54,6 +85,8 @@ const BookingModal = () => (
             type="checkbox"
             id="booking-legal"
             name="booking-legal"
+            checked = {userLegal}
+            onChange = {(evt) => setUserLegal(evt.target.checked)}
             required
           />
           <S.BookingCheckboxLabel
@@ -72,6 +105,7 @@ const BookingModal = () => (
       </S.BookingForm>
     </S.Modal>
   </S.BlockLayer>
-);
+  );
+}
 
 export default BookingModal;

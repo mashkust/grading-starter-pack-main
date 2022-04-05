@@ -7,7 +7,11 @@ export const AppRoute = {
   Main: '/',
   Quests:'/quests',
   Quest: '/detailed-quest/:id',
-  Orders: '/orders'
+  Orders: '/orders',
+  Contacts: '/contacts',
+  Beginner: '/*',
+  Reviews: '/*',
+  Stock: '/*',
 }
 
 export const APIRoute = {

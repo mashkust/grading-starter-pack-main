@@ -5,6 +5,8 @@ const initialState= {
   quests: [],
   quest: {},
   activeGenre: DEFAULT_GENRE,
+  orders: [],
+  isDataSending: false,
 };
 
 export const questData = createSlice({
@@ -17,10 +19,14 @@ export const questData = createSlice({
     loadQuest: (state, action) => {
       state.quest = action.payload;
     },
+    sendOrder: (state, action) => {
+      state.isDataSending = action.payload;
+    },
   },
 });
 
 export const {
   loadQuests,
-  loadQuest
+  loadQuest,
+  sendOrder
 } = questData.actions;

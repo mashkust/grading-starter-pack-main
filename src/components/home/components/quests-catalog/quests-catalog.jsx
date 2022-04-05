@@ -1,7 +1,7 @@
 import { ReactComponent as IconPerson } from 'assets/img/icon-person.svg';
 import { ReactComponent as IconPuzzle } from 'assets/img/icon-puzzle.svg';
 import * as S from './quests-catalog.styled';
-import { useAppSelector, useAppDispatch } from 'hooks/hooks';
+import { useAppSelector } from 'hooks/hooks';
 import { generatePath } from 'react-router-dom';
 import { AppRoute, DEFAULT_GENRE, LEVEL_QUEST } from 'const';
 import { useState, useEffect } from 'react';
@@ -14,7 +14,6 @@ const QuestsCatalog = () => {
   const [genres, setGenres] = useState([]);
 
   useEffect(() => {
-
     const defaultGenres = [];
     if (initialQuests) {
       initialQuests.forEach(el => {
@@ -37,21 +36,21 @@ const QuestsCatalog = () => {
             <S.QuestItemLink to={generatePath(AppRoute.Quest, { id: String(quest.id) })}>
               <S.Quest>
                 <S.QuestImage
-                  src = {quest.previewImg}
+                  src = {quest.previewImg ? quest.previewImg : ''}
                   width="344"
                   height="232"
-                  alt={quest.title}
+                  alt={quest.title ? quest.title : ''}
                 />
                 <S.QuestContent>
-                  <S.QuestTitle>{quest.title}</S.QuestTitle>
+                  <S.QuestTitle>{quest.title ? quest.title : ''}</S.QuestTitle>
                   <S.QuestFeatures>
                     <S.QuestFeatureItem>
                       <IconPerson />
-                      {quest.peopleCount[0]}-{quest.peopleCount[1]}
+                      {quest.peopleCount ? quest.peopleCount[0] :''}-{quest.peopleCount ? quest.peopleCount[1] :''}
                     </S.QuestFeatureItem>
                     <S.QuestFeatureItem>
                       <IconPuzzle />
-                      { LEVEL_QUEST[quest.level]}
+                      { quest.level ? LEVEL_QUEST[quest.level] : ''}
                     </S.QuestFeatureItem>
                   </S.QuestFeatures>
                 </S.QuestContent>
