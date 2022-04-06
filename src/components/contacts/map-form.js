@@ -5,10 +5,8 @@ import './Map.css';
 
 var placeholder = L.icon({
   iconUrl: "https://unpkg.com/leaflet@1.5.0/dist/images/marker-icon.png",
-  // iconSize:     [47, 47], // size of the icon
-  // iconAnchor:   [47, 47], // point of the icon which will correspond to marker's location
-  // popupAnchor:  [-25, -50], // point from which the popup should open relative to the iconAnchor
-  // tooltipAnchor:[30, -2]
+  iconAnchor:   [15, 40], // point of the icon which will correspond to marker's location
+  popupAnchor:  [-5, -30], // point from which the popup should open relative to the iconAnchor
 });
 
 class MapComponent extends React.Component {
@@ -20,6 +18,7 @@ class MapComponent extends React.Component {
 
   render() {
     var center = [this.state.lat, this.state.lng];
+    var center1 = [59.9684, 30.3175];
 
     return (
       <MapContainer zoom={this.state.zoom} center={center}>
