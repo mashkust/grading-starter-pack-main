@@ -4,10 +4,10 @@ import { useAppDispatch, useAppSelector } from 'hooks/hooks';
 import {useState} from 'react';
 import {sendOrderAction} from 'store/api-actions'
 
+
 const BookingModal = (setIsBookingModalOpened) => {
   const dispatch = useAppDispatch();
 
-  // const errorText = useAppSelector(({DATA}) => DATA.errorText);
   const isOrderSending = useAppSelector(({DATA}) => DATA.isDataSending);
   const [userName, setUserName] = useState('');
   const [userPeopleCount, setUserPeopleCount] = useState();
@@ -77,7 +77,7 @@ const BookingModal = (setIsBookingModalOpened) => {
             id="booking-people"
             name="booking-people"
             placeholder="Количество участников"
-            value={userPeopleCount}
+            value={userPeopleCount ? userPeopleCount : ''}
             onChange = {(evt) => setUserPeopleCount(Number(evt.currentTarget.value))}
             disabled = {isOrderSending}
             required
@@ -99,7 +99,7 @@ const BookingModal = (setIsBookingModalOpened) => {
           >
             <S.BookingCheckboxText>
               Я согласен с{' '}
-              <S.BookingLegalLink href="#">
+              <S.BookingLegalLink>
                 правилами обработки персональных данных и пользовательским
                 соглашением
               </S.BookingLegalLink>

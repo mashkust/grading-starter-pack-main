@@ -18,7 +18,6 @@ class MapComponent extends React.Component {
 
   render() {
     var center = [this.state.lat, this.state.lng];
-    var center1 = [59.9684, 30.3175];
 
     return (
       <MapContainer zoom={this.state.zoom} center={center}>
