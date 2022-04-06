@@ -21,7 +21,7 @@ import sclep from 'img/cover-sklep.jpg';
 import ritual from 'img/cover-ritual.jpg';
 import ceil from 'img/cover-old-ceil.jpg';
 import house from 'img/cover-old-house.jpg';
-
+// import { ToastContainer } from 'react-toastify';
 const COVER_IMG = [maniac, fatal, final, mars, qhost, woods, metro, sclep, ritual, ceil, house];
 let coverImg
 
@@ -92,6 +92,7 @@ const DetailedQuest = () => {
             </S.QuestBookingBtn>
           </S.PageDescription>
         </S.PageContentWrapper>
+        {/* <ToastContainer/> */}
         {isBookingModalOpened && <BookingModal setIsBookingModalOpened={setIsBookingModalOpened} />}
       </S.Main>
     </MainLayout>

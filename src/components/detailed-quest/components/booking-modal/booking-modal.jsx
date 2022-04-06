@@ -4,8 +4,7 @@ import { useAppDispatch, useAppSelector } from 'hooks/hooks';
 import {useState} from 'react';
 import {sendOrderAction} from 'store/api-actions'
 
-
-const BookingModal = (setIsBookingModalOpened) => {
+const BookingModal = ({setIsBookingModalOpened}) => {
   const dispatch = useAppDispatch();
 
   const isOrderSending = useAppSelector(({DATA}) => DATA.isDataSending);
@@ -17,9 +16,10 @@ const BookingModal = (setIsBookingModalOpened) => {
   return(
   <S.BlockLayer>
     <S.Modal>
-      <S.ModalCloseBtn onСlick = {() => setIsBookingModalOpened(false)}>
+      <S.ModalCloseBtn  onClick = {() => setIsBookingModalOpened(false) }>
         <IconClose width="16" height="16" />
-        <S.ModalCloseLabel >Закрыть окно</S.ModalCloseLabel>
+        <S.ModalCloseLabel >
+          Закрыть окно</S.ModalCloseLabel>
       </S.ModalCloseBtn>
       <S.ModalTitle>Оставить заявку</S.ModalTitle>
       <S.BookingForm
@@ -61,7 +61,7 @@ const BookingModal = (setIsBookingModalOpened) => {
             id="booking-phone"
             name="booking-phone"
             placeholder="Телефон в формате: 7000000000"
-            pattern="[7]{1}[0-9]{9}"
+            pattern="[7]{1}[0-9]{10}"
             value={userPhone}
             onChange = {(evt) => setUserPhone(evt.currentTarget.value)}
             disabled = {isOrderSending}
