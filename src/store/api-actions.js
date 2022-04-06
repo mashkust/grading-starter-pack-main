@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api, store } from './index';
 import { APIRoute } from '../const';
-import {loadQuests, loadQuest, sendOrder} from './quest-data';
+import {loadQuests, loadQuest, sendOrder, setLoading} from './quest-data';
 import { errorHandle} from 'services/error-handle.js'
 // import ManiacBcImg from './../img/cover-maniac.jpg';
 
@@ -26,10 +26,13 @@ export const fetchQuestAction = createAsyncThunk(
   'data/fetchQuest',
   async (id) => {
     try {
+      store.dispatch(setLoading(false));
       const {data} = await api.get(`${APIRoute.Quest}${id}`);
       store.dispatch(loadQuest(data));
     } catch (error) {
       errorHandle(error);
+    } finally {
+      store.dispatch(setLoading(true));
     }
   },
 );

@@ -9,7 +9,7 @@ import * as S from './home.styled';
 
 const HomePage = () => (
   <MainLayout>
-    <S.Main forwardedAs="main">
+    <S.Main>
       <PageHeading>
         <PageTitle>Выберите тематику</PageTitle>
         <PageSubtext>квесты в Санкт-Петербурге</PageSubtext>

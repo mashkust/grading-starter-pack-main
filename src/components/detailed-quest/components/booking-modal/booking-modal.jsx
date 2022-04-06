@@ -4,20 +4,20 @@ import { useAppDispatch, useAppSelector } from 'hooks/hooks';
 import {useState} from 'react';
 import {sendOrderAction} from 'store/api-actions'
 
-const BookingModal = () => {
+const BookingModal = (setIsBookingModalOpened) => {
   const dispatch = useAppDispatch();
 
   // const errorText = useAppSelector(({DATA}) => DATA.errorText);
   const isOrderSending = useAppSelector(({DATA}) => DATA.isDataSending);
   const [userName, setUserName] = useState('');
-  const [userPeopleCount, setUserPeopleCount] = useState(1);
+  const [userPeopleCount, setUserPeopleCount] = useState();
   const [userPhone, setUserPhone] = useState('');
   const [userLegal, setUserLegal] = useState(false);
 
   return(
   <S.BlockLayer>
     <S.Modal>
-      <S.ModalCloseBtn>
+      <S.ModalCloseBtn onСlick = {() => setIsBookingModalOpened(false)}>
         <IconClose width="16" height="16" />
         <S.ModalCloseLabel >Закрыть окно</S.ModalCloseLabel>
       </S.ModalCloseBtn>
@@ -33,7 +33,7 @@ const BookingModal = () => {
         }));
         evt.target.reset()
         setUserName('')
-        setUserPeopleCount(1)
+        setUserPeopleCount()
         setUserPhone('')
         setUserLegal(false)
       }}

@@ -10,28 +10,26 @@ import Home from 'components/home/home';
 import NotFoundPage from 'components/notfound-page';
 import { appTheme } from './common';
 import * as S from './app.styled';
-import {AppRoute} from '../../const';
+import { AppRoute } from '../../const';
 
-const App = () => (
-  <ThemeProvider theme={appTheme}>
-    <S.GlobalStyle />
-    <Router>
-      <Switch>
-        <Route path={AppRoute.Quest}>
-          <DetailedQuest />
-        </Route>
-        <Route path={AppRoute.Contacts}>
-          <Contacts />
-        </Route>
-        <Route exact path={AppRoute.Main}>
-          <Home />
-        </Route>
-        <Route exact path="/*">
-          <NotFoundPage />
-        </Route>
-      </Switch>
-    </Router>
-  </ThemeProvider>
-);
+const App = () => <ThemeProvider theme={appTheme}>
+  <S.GlobalStyle />
+  <Router>
+    <Switch>
+      <Route path={AppRoute.Quest}>
+        <DetailedQuest />
+      </Route>
+      <Route path={AppRoute.Contacts}>
+        <Contacts />
+      </Route>
+      <Route exact path={AppRoute.Main}>
+        <Home />
+      </Route>
+      <Route path="/*">
+        <NotFoundPage />
+      </Route>
+    </Switch>
+  </Router>
+</ThemeProvider>;
 
 export default App;

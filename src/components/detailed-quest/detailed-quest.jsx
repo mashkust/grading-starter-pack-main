@@ -6,6 +6,7 @@ import { ReactComponent as IconPuzzle } from 'assets/img/icon-puzzle.svg';
 import * as S from './detailed-quest.styled';
 import { BookingModal } from './components/components';
 import { useAppDispatch, useAppSelector } from 'hooks/hooks';
+import LoadingScreen from 'components/loading-screen.jsx';
 import { useParams } from 'react-router-dom';
 import { fetchQuestAction } from 'store/api-actions';
 import { GENRE , LEVEL_QUEST } from 'const';
@@ -42,12 +43,16 @@ const DetailedQuest = () => {
   }, [dispatch, id]);
 
   const quest = useAppSelector(({DATA}) => DATA.quest);
+  const isDataLoaded= useAppSelector(({DATA}) => DATA.isDataLoaded);
   coverImg = quest.coverImg;
 
-  if ( coverImg) {
-    COVER_IMG.slice().map((cover)=>  cover.includes(coverImg.substr(4).substring(0, coverImg.substr(4).length - 4)) ? coverImg= cover: '')
+  if (!quest || !isDataLoaded) {
+    return <LoadingScreen />;
   }
-  return (
+    if ( coverImg) {
+      COVER_IMG.slice().map((cover)=>  cover.includes(coverImg.substr(4).substring(0, coverImg.substr(4).length - 4)) ? coverImg= cover: '')
+    }
+    return (
     <MainLayout>
       <S.Main>
         <S.PageImage
@@ -87,11 +92,10 @@ const DetailedQuest = () => {
             </S.QuestBookingBtn>
           </S.PageDescription>
         </S.PageContentWrapper>
-
-        {isBookingModalOpened && <BookingModal />}
+        {isBookingModalOpened && <BookingModal setIsBookingModalOpened={setIsBookingModalOpened} />}
       </S.Main>
     </MainLayout>
-  );
+    );
 };
 
 export default DetailedQuest;

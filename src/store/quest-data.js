@@ -8,6 +8,7 @@ const initialState= {
   orders: [],
   isDataSending: false,
   setErrorText: '',
+  isDataLoaded: false,
 };
 
 export const questData = createSlice({
@@ -26,10 +27,14 @@ export const questData = createSlice({
     setErrorText: (state, action) => {
       state.errorText = action.payload.text;
     },
+    setLoading: (state, action) => {
+      state.isDataLoaded = action.payload;
+    }
   },
 });
 
 export const {
+  setLoading,
   loadQuests,
   loadQuest,
   sendOrder,

@@ -5,7 +5,6 @@ export const NameSpace = {
 
 export const AppRoute = {
   Main: '/',
-  Quests:'/quests',
   Quest: '/detailed-quest/:id',
   Orders: '/orders',
   Contacts: '/contacts',
