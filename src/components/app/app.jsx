@@ -11,8 +11,14 @@ import NotFoundPage from 'components/notfound-page';
 import { appTheme } from './common';
 import * as S from './app.styled';
 import { AppRoute } from '../../const';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
-const App = () => <ThemeProvider theme={appTheme}>
+const App = () => {
+  return (
+    <><ToastContainer/>
+  <ThemeProvider theme={appTheme}>
   <S.GlobalStyle />
   <Router>
     <Switch>
@@ -30,6 +36,9 @@ const App = () => <ThemeProvider theme={appTheme}>
       </Route>
     </Switch>
   </Router>
-</ThemeProvider>;
+ </ThemeProvider>
+ </>
+ )
+}
 
 export default App;

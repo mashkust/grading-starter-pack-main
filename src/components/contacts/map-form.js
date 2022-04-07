@@ -2,9 +2,10 @@ import React from 'react';
 import L from 'leaflet';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import './Map.css';
+import {IconLocation} from './icon-location';
 
 var placeholder = L.icon({
-  iconUrl: "https://unpkg.com/leaflet@1.5.0/dist/images/marker-icon.png",
+  icon: IconLocation,
   iconAnchor:   [15, 40], // point of the icon which will correspond to marker's location
   popupAnchor:  [-5, -30], // point from which the popup should open relative to the iconAnchor
 });
@@ -26,7 +27,7 @@ class MapComponent extends React.Component {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        <Marker position={center} icon={ placeholder} >
+        <Marker position={center} icon={ placeholder.icon} >
           <Popup>Мы находимся по адресу Санкт-Петербург, Набережная реки Карповка, д 5</Popup>
         </Marker>
       </MapContainer>

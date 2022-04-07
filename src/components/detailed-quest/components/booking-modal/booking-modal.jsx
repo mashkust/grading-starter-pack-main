@@ -77,6 +77,7 @@ const BookingModal = ({setIsBookingModalOpened}) => {
             id="booking-people"
             name="booking-people"
             placeholder="Количество участников"
+            min="0" max="20"
             value={userPeopleCount ? userPeopleCount : ''}
             onChange = {(evt) => setUserPeopleCount(Number(evt.currentTarget.value))}
             disabled = {isOrderSending}
