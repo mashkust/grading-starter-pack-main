@@ -11,14 +11,13 @@ export const errorHandle = (error) => {
   if (response) {
     switch (response.status) {
       case HTTP_CODE.BAD_REQUEST:
-        toast.info(response.data.messages[0]);
-        console.log(response.data.error)
+        toast.info(response.data);
         break;
       case HTTP_CODE.NOT_FOUND:
-        toast.info(response.data.messages[0]);
+        toast.info(response.data);
         break;
       case HTTP_CODE.SERVER_ERROR:
-        toast.info(response.data.messages[0]);
+        toast.info(response.data);
         break;
       default:
     }

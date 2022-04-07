@@ -11,7 +11,6 @@ import NotFoundPage from 'components/notfound-page';
 import { appTheme } from './common';
 import * as S from './app.styled';
 import { AppRoute } from '../../const';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 
