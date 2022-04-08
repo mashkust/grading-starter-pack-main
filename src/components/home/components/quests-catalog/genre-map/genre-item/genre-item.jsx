@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppDispatch } from 'hooks/hooks';
-import * as S from './../quests-catalog.styled';
+import * as S from '../../quests-catalog.styled';
 import { DEFAULT_GENRE, GENRE } from 'const';
 import { setActiveGenre } from 'store/quest-process';
 import {getGenreIcon} from './utils';

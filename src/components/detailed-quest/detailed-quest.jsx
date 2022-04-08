@@ -22,15 +22,12 @@ import ritual from 'img/cover-ritual.jpg';
 import ceil from 'img/cover-old-ceil.jpg';
 import house from 'img/cover-old-house.jpg';
 const COVER_IMG = [maniac, fatal, final, mars, qhost, woods, metro, sclep, ritual, ceil, house];
-let coverImg
 
 const DetailedQuest = () => {
   const [isBookingModalOpened, setIsBookingModalOpened] = useState(false);
-
   const onBookingBtnClick = () => {
     setIsBookingModalOpened(true);
   };
-
   const dispatch = useAppDispatch();
   const params = useParams();
   const id = Number(params.id);
@@ -39,18 +36,19 @@ const DetailedQuest = () => {
     if (id) {
       dispatch(fetchQuestAction(id));
     }
-  }, [dispatch, id]);
+  }, []);
 
   const quest = useAppSelector(({DATA}) => DATA.quest);
   const isDataLoaded= useAppSelector(({DATA}) => DATA.isDataLoaded);
-  coverImg = quest.coverImg;
-
+  let coverImg = quest.coverImg;
   if (!quest || !isDataLoaded) {
     return <LoadingScreen />;
   }
-    if ( coverImg) {
-      COVER_IMG.slice().map((cover)=>  cover.includes(coverImg.substr(4).substring(0, coverImg.substr(4).length - 4)) ? coverImg= cover: '')
+
+    if (coverImg) {
+      COVER_IMG.slice(0).map((cover) =>  cover.includes(coverImg.substr(4).substring(0, coverImg.substr(4).length - 4)) ? coverImg = cover: '')
     }
+    const title = quest.title ?? '';
     return (
     <MainLayout>
       <S.Main>
@@ -58,11 +56,11 @@ const DetailedQuest = () => {
               src={coverImg}
               width="1366"
               height="768"
-              alt={quest.title ? quest.title : ''}
+              alt={title}
         />
         <S.PageContentWrapper>
           <S.PageHeading>
-            <S.PageTitle>{quest.title ? quest.title : ''}</S.PageTitle>
+            <S.PageTitle>{title}</S.PageTitle>
             <S.PageSubtitle>{quest.type ? GENRE[quest.type] : ''}</S.PageSubtitle>
           </S.PageHeading>
 
@@ -70,22 +68,20 @@ const DetailedQuest = () => {
             <S.Features>
               <S.FeaturesItem>
                 <IconClock width="20" height="20" />
-                <S.FeatureTitle>{quest.duration ? quest.duration : ''}</S.FeatureTitle>
+                <S.FeatureTitle>{quest.duration ?? ''}</S.FeatureTitle>
               </S.FeaturesItem>
               <S.FeaturesItem>
                 <IconPerson width="19" height="24" />
-                <S.FeatureTitle>{quest.peopleCount ? quest.peopleCount[0] :''}-{quest.peopleCount ? quest.peopleCount[1] :''}</S.FeatureTitle>
+                <S.FeatureTitle>{quest.peopleCount && (quest.peopleCount[0] + '-' + quest.peopleCount[1])}</S.FeatureTitle>
               </S.FeaturesItem>
               <S.FeaturesItem>
                 <IconPuzzle width="24" height="24" />
                 <S.FeatureTitle>{ quest.level ? LEVEL_QUEST[quest.level] : ''}</S.FeatureTitle>
               </S.FeaturesItem>
             </S.Features>
-
             <S.QuestDescription>
-            {quest.description}
+            {quest.description ?? ''}
             </S.QuestDescription>
-
             <S.QuestBookingBtn onClick={onBookingBtnClick}>
               Забронировать
             </S.QuestBookingBtn>

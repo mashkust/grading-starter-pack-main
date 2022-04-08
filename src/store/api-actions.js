@@ -3,13 +3,30 @@ import { api, store } from './index';
 import { APIRoute } from '../const';
 import {loadQuests, loadQuest, sendOrder, setLoading} from './quest-data';
 import { errorHandle} from 'services/error-handle.js'
-// import ManiacBcImg from './../img/cover-maniac.jpg';
+// import maniac from 'img/preview-maniac.jpg' ;
+// import mars from 'img/preview-mars-2056.jpg';
+// import fatal from 'img/preview-fatal-exp.jpg';
+// import final from 'img/preview-final-frontier.jpg';
+// import qhost from 'img/preview-ghost-story.jpg';
+// import woods from 'img/preview-house-in-the-woods.jpg';
+// import metro from 'img/preview-metro2033.jpg';
+// import sclep from 'img/preview-sklep.jpg';
+// import ritual from 'img/preview-ritual.jpg';
+// import ceil from 'img/preview-old-ceil.jpg';
+// import house from 'img/preview-old-house.jpg';
+// const previewImgs = [maniac, fatal, final, mars, qhost, woods, metro, sclep, ritual, ceil, house];
 
-// const prepareData = (data) => data.map(el => {
-//   console.log('el', el);
-//   el.coverImg =  ManiacBcImg;
+// export const parseData = (data) => {
+//   console.log('data', data);
+//   return data;
+// }
+
+// export const parseQuests = (data) => data.map(el => {
+//   const candidat = previewImgs.find(elem => elem.includes(el.previewImg.slice(3,-4)));
+//   console.log('candidat', candidat );
 //   return el;
-//  })
+// });
+
 export const fetchQuestsAction = createAsyncThunk(
   'data/fetchQuests',
   async () => {

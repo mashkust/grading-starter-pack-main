@@ -1,22 +1,13 @@
-// export const getRequiredSVGPinByCategory = () => {
-//   const pin = <PinMoto />
-//   const iconMarkup = renderToStaticMarkup(
-//      pin
-//   )
-//   const customMarketIcon = divIcon({
-//       html: iconMarkup
-//   })
-//   return customMarketIcon
-// }
-
 import React from 'react';
 import L from 'leaflet';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import './Map.css';
-var placeholder = L.icon({
-  iconUrl: "https://unpkg.com/leaflet@1.5.0/dist/images/marker-icon.png",
-  iconAnchor:   [15, 40], // point of the icon which will correspond to marker's location
-  popupAnchor:  [-5, -30], // point from which the popup should open relative to the iconAnchor
+import icon from '../../assets/img/icon-blip.svg'
+
+var placeholder = new L.icon({
+  iconUrl: icon,
+  iconAnchor:   [25, 60],
+  popupAnchor:  [0, -58],
 });
 class MapComponent extends React.Component {
   state = {
