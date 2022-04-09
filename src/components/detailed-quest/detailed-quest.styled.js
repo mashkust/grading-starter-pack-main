@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { Button } from 'components/common/common';
 
 const Main = styled.main`
-  max-width: 556px;
-  margin-top: 149px;
+  max-width: 670px;
+  margin-top: 260px;
   margin-bottom: 149px;
   margin-left: 43.92vw;
 `;

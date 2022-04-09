@@ -61,7 +61,7 @@ const BookingModal = ({setIsBookingModalOpened}) => {
             id="booking-phone"
             name="booking-phone"
             placeholder="Телефон в формате: 7000000000"
-            pattern="[7]{1}[0-9]{9}"
+            pattern="[7]{1}[0-9]{10}"
             value={userPhone}
             onChange = {(evt) => setUserPhone(evt.currentTarget.value)}
             disabled = {isOrderSending}

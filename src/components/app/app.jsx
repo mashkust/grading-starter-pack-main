@@ -16,7 +16,7 @@ import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   return (
-    <><ToastContainer/>
+    <><ToastContainer theme="dark"/>
   <ThemeProvider theme={appTheme}>
   <S.GlobalStyle />
   <Router>
